@@ -1,0 +1,42 @@
+---
+title: "DDP Presentation"
+author: "PK"
+date: "16/01/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+- Presentation is part of the project assignment for Coursera Developing Data Products class. 
+- Purpose of the project is to write a shiny app that can help predict car MPG based on weight and transmission.
+- This presentation will explain the app features. 
+
+## Miles per Gallon vs cylinder
+This plot shows how the MPG varies depending on the number of cylinders and the type of transmission.
+By selecting the car transmission (automatic or manual) the figure displays the distribution of MPG for 4,6, and 8 cylinder cars.
+```{r}
+boxplot(mpg~cyl, data = mtcars, col="blue",
+                main="Miles per Gallon vs Number of Cylinders",
+                ylab="Miles per Gallon",
+                xlab="Number of Cylinders")
+```
+
+
+## Miles per Gallon vs Weight
+
+- Scatterplot shows how the MPG vary depending on the vehicle weight and the type of transmission.
+- By selecting the car transmission type (automatic or manual), the plot displays the value of MPG for each weight and a regression line is also provided.
+- After selecting the transmission in the dropdown menu and the car weight in the slider, the predicted MPG is displaid based on the linear regression model.
+
+## Miles per Gallon vs Weight Plot
+
+```{r lm, echo=FALSE}
+plot(mtcars$wt, mtcars$mpg, main = "Miles per Gallon vs Weight",
+     xlab = "Weght (lb/1000)", ylab = "Miles per Gallon", pch=16)
+abline(lm(mpg~wt,data = mtcars)) 
+```
+
